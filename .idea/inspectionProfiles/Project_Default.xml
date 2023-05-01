@@ -1,0 +1,80 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="53">
+            <item index="0" class="java.lang.String" itemvalue="factory-boy" />
+            <item index="1" class="java.lang.String" itemvalue="pytest-splinter" />
+            <item index="2" class="java.lang.String" itemvalue="unidecode" />
+            <item index="3" class="java.lang.String" itemvalue="pytest-django" />
+            <item index="4" class="java.lang.String" itemvalue="PyYAML" />
+            <item index="5" class="java.lang.String" itemvalue="psycopg2-binary" />
+            <item index="6" class="java.lang.String" itemvalue="Faker" />
+            <item index="7" class="java.lang.String" itemvalue="lxml" />
+            <item index="8" class="java.lang.String" itemvalue="PyPDF2" />
+            <item index="9" class="java.lang.String" itemvalue="django-session-timeout" />
+            <item index="10" class="java.lang.String" itemvalue="graypy" />
+            <item index="11" class="java.lang.String" itemvalue="django-nose" />
+            <item index="12" class="java.lang.String" itemvalue="tenant-schemas-celery" />
+            <item index="13" class="java.lang.String" itemvalue="aloe_django" />
+            <item index="14" class="java.lang.String" itemvalue="splinter" />
+            <item index="15" class="java.lang.String" itemvalue="django-sphinxdoc" />
+            <item index="16" class="java.lang.String" itemvalue="pdf2image" />
+            <item index="17" class="java.lang.String" itemvalue="django-floppyforms" />
+            <item index="18" class="java.lang.String" itemvalue="mock" />
+            <item index="19" class="java.lang.String" itemvalue="django-tenants" />
+            <item index="20" class="java.lang.String" itemvalue="django-environ" />
+            <item index="21" class="java.lang.String" itemvalue="django-localflavor" />
+            <item index="22" class="java.lang.String" itemvalue="google-cloud-storage" />
+            <item index="23" class="java.lang.String" itemvalue="django-storages" />
+            <item index="24" class="java.lang.String" itemvalue="requests" />
+            <item index="25" class="java.lang.String" itemvalue="celery" />
+            <item index="26" class="java.lang.String" itemvalue="selenium" />
+            <item index="27" class="java.lang.String" itemvalue="pytest-cov" />
+            <item index="28" class="java.lang.String" itemvalue="markdown" />
+            <item index="29" class="java.lang.String" itemvalue="urllib3" />
+            <item index="30" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="31" class="java.lang.String" itemvalue="snapshottest" />
+            <item index="32" class="java.lang.String" itemvalue="python-barcode" />
+            <item index="33" class="java.lang.String" itemvalue="nose" />
+            <item index="34" class="java.lang.String" itemvalue="coverage" />
+            <item index="35" class="java.lang.String" itemvalue="django-wkhtmltopdf" />
+            <item index="36" class="java.lang.String" itemvalue="google-auth-oauthlib" />
+            <item index="37" class="java.lang.String" itemvalue="pytest" />
+            <item index="38" class="java.lang.String" itemvalue="pysigep" />
+            <item index="39" class="java.lang.String" itemvalue="aloe" />
+            <item index="40" class="java.lang.String" itemvalue="django-factory_boy" />
+            <item index="41" class="java.lang.String" itemvalue="django-debug-toolbar" />
+            <item index="42" class="java.lang.String" itemvalue="django-formset-js-improved" />
+            <item index="43" class="java.lang.String" itemvalue="sphinx" />
+            <item index="44" class="java.lang.String" itemvalue="pandas" />
+            <item index="45" class="java.lang.String" itemvalue="zdesk" />
+            <item index="46" class="java.lang.String" itemvalue="Django" />
+            <item index="47" class="java.lang.String" itemvalue="future" />
+            <item index="48" class="java.lang.String" itemvalue="django-markup" />
+            <item index="49" class="java.lang.String" itemvalue="pytz" />
+            <item index="50" class="java.lang.String" itemvalue="Pillow" />
+            <item index="51" class="java.lang.String" itemvalue="google-auth" />
+            <item index="52" class="java.lang.String" itemvalue="openpyxl" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N801" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="django.db.models.filter" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
