@@ -30,7 +30,7 @@ def save_df_to_sheet(df, sheet_name, sheet_id):
     sheet.append_row(header)
 
     # Atualizar os dados da planilha
-    data = df.values.tolist()  # Converter o DataFrame em uma lista de listas
+    data = df.applymap(lambda x: str(x) if isinstance(x, float) else x).values.tolist()  # Converter o DataFrame em uma lista de listas
     cell_range = f'A2:{gspread.utils.rowcol_to_a1(len(data) + 1, len(header))}'
     cells = sheet.range(cell_range)
     for i, row in enumerate(data):
@@ -57,6 +57,26 @@ def get_all_tickers():
             tickers.add(ticker)
 
     return sorted(tickers)
+
+
+def get_all_fii_tickers():
+    url = "https://www.fundsexplorer.com.br/ranking"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+    }
+
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+
+    # Encontrar todos os tickers na página
+    fii_tickers = set()
+    lines = response.text.splitlines()
+    for line in lines:
+        if '<a href="/funds/' in line:
+            fii_ticker = line.split('="/funds/')[1].split('">')[0]
+            fii_tickers.add(fii_ticker)
+
+    return sorted(fii_tickers)
 
 
 def save_tickers_to_csv(tickers, filename="tickers.csv"):
@@ -129,5 +149,5 @@ if __name__ == "__main__":
 
     # Atualize o ID da planilha e o nome da planilha conforme necessário
     sheet_id = '1_pZOasF7mjs-JtibgEusc1Bh80i2IQOcsEW0mCBoEHo'
-    sheet_name = 'Tickers'
+    sheet_name = 'Açoes'
     save_df_to_sheet(stock_data, sheet_name, sheet_id)
