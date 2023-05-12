@@ -27,23 +27,26 @@ def conn_sheet():
 
 async def get_dividends_yfinance(ticker, period):
     stock = yf.Ticker(ticker)
-    dividends = stock.history(period='max').Dividends
-    dividends.index = dividends.index.tz_convert('America/Sao_Paulo')
+    try:
+        dividends = stock.history(period='max').Dividends
+        dividends.index = dividends.index.tz_convert('America/Sao_Paulo')
 
-    now = pd.Timestamp.now(tz=pytz.timezone('America/Sao_Paulo'))
+        now = pd.Timestamp.now(tz=pytz.timezone('America/Sao_Paulo'))
 
-    if period == '1y':
-        dividends = dividends[dividends.index > now - pd.DateOffset(years=1)]
-    elif period == '6y':
-        dividends = dividends[dividends.index > now - pd.DateOffset(years=6)]
-    elif period == 'max':
-        pass
-    else:
-        return None
+        if period == '1y':
+            dividends = dividends[dividends.index > now - pd.DateOffset(years=1)]
+        elif period == '6y':
+            dividends = dividends[dividends.index > now - pd.DateOffset(years=6)]
+        elif period == 'max':
+            pass
+        else:
+            return None
 
-    if len(dividends) > 0:
-        return round(dividends.sum(), 2)
-    else:
+        if len(dividends) > 0:
+            return round(dividends.sum(), 2)
+        else:
+            return None
+    except:
         return None
 
 
