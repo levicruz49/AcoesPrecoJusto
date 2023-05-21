@@ -22,7 +22,7 @@ async def get_dividends_yfinance(ticker, period):
 
         if period == '1y':
             dividends = dividends[dividends.index > (now - pd.DateOffset(years=1)).to_pydatetime()]
-        elif period == '6y':
+        elif period == '7y':
             dividends = dividends[dividends.index > (now - pd.DateOffset(years=6)).to_pydatetime()]
         elif period == 'max':
             pass
@@ -43,7 +43,7 @@ async def main(tickers):
         try:
             dividend_data[ticker] = {
                 '1y': await get_dividends_yfinance(ticker, '1y'),
-                '6y': await get_dividends_yfinance(ticker, '6y'),
+                '7y': await get_dividends_yfinance(ticker, '7y'),
                 'max': await get_dividends_yfinance(ticker, 'max')
             }
         except Exception as e:
@@ -53,21 +53,44 @@ async def main(tickers):
     return dividend_data
 
 
+# def update_spreadsheet(dividend_data, filename, sheet_name):
+#     df = pd.read_excel(filename, sheet_name=sheet_name)
+#
+#     for i, ticker in enumerate(dividend_data.keys(), start=2):
+#         ticker_without_suffix = ticker.replace('.SA', '')  # Remover o sufixo '.SA'
+#         if ticker_without_suffix in df['Ticker'].str.strip().values:  # Remover espaços dos tickers na planilha
+#             index = df[df['Ticker'].str.strip() == ticker_without_suffix].index[
+#                 0]  # Usar tickers sem espaços para encontrar correspondência
+#             if dividend_data[ticker].get('1y'):
+#                 df.loc[index, 'Dv 12 meses'] = dividend_data[ticker]['1y']
+#             if dividend_data[ticker].get('7y'):
+#                 df.loc[index, 'Dv 7 Anos'] = dividend_data[ticker]['7y']
+#             if dividend_data[ticker].get('max'):
+#                 df.loc[index, 'Maximo'] = dividend_data[ticker]['max']
+#
+#     df.to_excel(filename, sheet_name=sheet_name, index=False)
+
 def update_spreadsheet(dividend_data, filename, sheet_name):
-    df = pd.read_excel(filename, sheet_name=sheet_name)
+    with pd.ExcelWriter(filename, engine='openpyxl', mode='w') as writer:  # open the file in write mode
+        df = pd.DataFrame()
 
-    for i, ticker in enumerate(dividend_data.keys(), start=2):
-        ticker_without_suffix = ticker.replace('.SA', '')  # Remover o sufixo '.SA'
-        if ticker_without_suffix in df['Ticker'].values:
-            index = df[df['Ticker'] == ticker_without_suffix].index[0]
-            if dividend_data[ticker].get('1y'):
-                df.loc[index, 'Dv 12 meses'] = dividend_data[ticker]['1y']
-            if dividend_data[ticker].get('6y'):
-                df.loc[index, 'Dv 6 Anos'] = dividend_data[ticker]['6y']
-            if dividend_data[ticker].get('max'):
-                df.loc[index, 'Maximo'] = dividend_data[ticker]['max']
+        for i, ticker in enumerate(dividend_data.keys(), start=2):
+            ticker_without_suffix = ticker.replace('.SA', '')  # Remover o sufixo '.SA'
+            if 'Ticker' in df.columns and ticker_without_suffix in df['Ticker'].str.strip().values:  # Remover espaços dos tickers na planilha
+                index = df[df['Ticker'].str.strip() == ticker_without_suffix].index[0]  # Usar tickers sem espaços para encontrar correspondência
+                if dividend_data[ticker].get('1y'):
+                    df.loc[index, 'Dv 12 meses'] = dividend_data[ticker]['1y']
+                if dividend_data[ticker].get('7y'):
+                    df.loc[index, 'Dv 7 Anos'] = dividend_data[ticker]['7y']
+                if dividend_data[ticker].get('max'):
+                    df.loc[index, 'Maximo'] = dividend_data[ticker]['max']
 
-    df.to_excel(filename, sheet_name=sheet_name, index=False)
+        if not df.empty:  # only write to the sheet if df is not empty
+            df.to_excel(writer, sheet_name=sheet_name, index=False)  # write to the specific sheet
+            writer.save()  # save the file
+
+
+
 
 
 if __name__ == "__main__":
@@ -77,7 +100,7 @@ if __name__ == "__main__":
     # Obter lista de tickers da coluna A, começando na linha 2
     df = pd.read_excel(filename, sheet_name=sheet_name, header=0)
     tickers = df['Ticker'].dropna().astype(str).tolist()
-    tickers_with_suffix = [ticker + ".SA" for ticker in tickers]
+    tickers_with_suffix = [ticker.strip() + ".SA" for ticker in tickers]
 
     # Obter dados de dividendos
     dividend_data = asyncio.run(main(tickers_with_suffix))
