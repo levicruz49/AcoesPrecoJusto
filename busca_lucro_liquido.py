@@ -9,18 +9,27 @@ from bs4 import BeautifulSoup
 servico = Service(ChromeDriverManager().install())
 navegador = webdriver.Chrome(service=servico)
 
-def get_net_income(ticker):
-    url = f'https://investidor10.com.br/acoes/{ticker}/'
+def login():
+    # url = f'https://investidor10.com.br/acoes/{ticker}/'
+    url = f'https://investidor10.com.br/'
     navegador.get(url)
-    WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.ID, "table-balance-results")))
-    # Aguarda até que a tabela com o ID "table-balance-results" esteja presente na página
+
+    # Pausar o script até que o usuário pressione Enter.
+    input("Pressione Enter após fazer o login: ")
+    return True
+
+def busca(ticker):
+
+    new_url = f'https://investidor10.com.br/acoes/{ticker}/'
+    navegador.get(new_url)
 
     # Extrai os dados de lucro líquido aqui
     soup = BeautifulSoup(navegador.page_source, 'html.parser')
     table = soup.find('table', {'id': 'table-balance-results'})
     rows = table.find_all('tr')
     for row in rows:
-        columns = row.find_all('td')
+        columns = row.find_all('th')
+        #TODO consegui acessar a tabela, agora precisa fazer o for para procurar o lucro liquido, não como esta abaixo
         if len(columns) > 0 and columns[0].text.strip() == 'Lucro Líquido - (R$)':
             net_income = [column.text.strip() for column in columns[2:]]  # Extrai os lucros a partir da terceira coluna
             return net_income
@@ -29,13 +38,15 @@ def get_net_income(ticker):
 
 if __name__ == "__main__":
     tickers = ['petr4']  # Lista de tickers das empresas desejadas
+    acesso = login()
 
-    for ticker in tickers:
-        net_income = get_net_income(ticker)
-        if net_income is not None:
-            print(f"Net income for {ticker}: {net_income}")
-        else:
-            print(f"Failed to get net income for {ticker}")
+    if acesso:
+        for ticker in tickers:
+            net_income = busca(ticker)
+            if net_income is not None:
+                print(f"Net income for {ticker}: {net_income}")
+            else:
+                print(f"Failed to get net income for {ticker}")
 
 navegador.quit()
 
