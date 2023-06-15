@@ -1,10 +1,14 @@
-import asyncio
-import pandas as pd
-import pytz
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from bs4 import BeautifulSoup
 import time
+import pandas as pd
 from google.oauth2 import service_account
 import gspread
-import yfinance as yf
 
 
 # Estabelece a conexão com a planilha do Google
@@ -17,48 +21,30 @@ def conn_sheet():
     return gspread.authorize(credentials)
 
 
-async def get_dividends_yfinance(ticker, period):
-    stock = yf.Ticker(ticker)
-    try:
-        dividends = stock.history(period='max').Dividends
-        dividends.index = dividends.index.tz_convert('America/Sao_Paulo')
+def get_proventos_selenium(navegador):
 
-        now = pd.Timestamp.now(tz=pytz.timezone('America/Sao_Paulo'))
+   # Deixa o tempo para a página recarregar
+    time.sleep(2)
 
-        if period == '1y':
-            dividends = dividends[dividends.index > now - pd.DateOffset(years=1)]
-        elif period == '6y':
-            dividends = dividends[dividends.index > now - pd.DateOffset(years=6)]
-        elif period == 'max':
-            pass
-        else:
-            return None
+    # Obter a tabela de proventos
+    soup = BeautifulSoup(navegador.page_source, 'html.parser')
+    table = soup.find('table', {'id': 'resultado'})
+    proventos = []
 
-        if len(dividends) > 0:
-            return round(dividends.sum(), 2)
-        else:
-            return None
-    except:
-        return None
+    if table:
+        for row in table.find_all('tr')[1:]:
+            cols = row.find_all('td')
+            # Pega a data de pagamento e o valor do dividendo
+            data_pagamento = cols[2].text
+            valor = cols[3].text
+            # Converte a data para o ano e o valor para float
+            ano = int(data_pagamento.split('/')[-1])
+            valor = float(valor.replace(',', '.'))
+            proventos.append((ano, valor))
+    else:
+        print(f'Não foi possível encontrar a tabela de proventos para o papel {ticker}.')
 
-
-# Função principal que busca os dividendos dos ativos
-async def main(tickers_with_suffix):
-    dividend_data = {'Ticker': [], '12 Months': [], '72 Months': [], 'Max': []}
-
-    for ticker in tickers_with_suffix:
-        dividend_data['Ticker'].append(ticker.rstrip(".SA"))
-        dividend_data['12 Months'].append(await get_dividends_yfinance(ticker, '1y'))
-        dividend_data['72 Months'].append(await get_dividends_yfinance(ticker, '6y'))
-        dividend_data['Max'].append(await get_dividends_yfinance(ticker, 'max'))
-        time.sleep(1)  # pausa de 1 segundo para evitar limites de taxa
-
-    return dividend_data
-
-
-# Adiciona um sufixo aos tickers
-def add_suffix_to_tickers(tickers, suffix=".SA"):
-    return [ticker + suffix for ticker in tickers]
+    return proventos
 
 
 if __name__ == "__main__":
@@ -67,30 +53,57 @@ if __name__ == "__main__":
     gc = conn_sheet()
     sheet = gc.open_by_key(sheet_id).worksheet(sheet_name)
 
-    # Pega todos os tickers da planilha que não têm dados nas colunas C, D e E
+    # Pega todos os tickers da planilha que não têm dados na coluna C
     all_values = sheet.get_all_values()
-    tickers = [row[0] for row in all_values[1:] if not (row[2] and row[3] and row[4])]
+    tickers = [row[0] for row in all_values[1:] if not row[2]]
 
-    # Encontra a primeira linha vazia nas colunas C, D e E
-    start_update_row = next((i for i, row in enumerate(all_values[2:], start=2) if not (row[2] and row[3] and row[4])),
-                            None)
+    # Encontra a primeira linha vazia na coluna C
+    start_update_row = next((i for i, row in enumerate(all_values[2:], start=2) if not row[2]), None)
 
-    tickers_with_suffix = add_suffix_to_tickers(tickers)
+    servico = Service(ChromeDriverManager().install())
+    navegador = webdriver.Chrome(service=servico)
 
-    dividend_data = asyncio.run(main(tickers_with_suffix))
+    for ticker in tickers:
+        url = f"https://www.fundamentus.com.br/fii_proventos.php?papel={ticker}&tipo=2"
+        navegador.get(url)
 
-    # Criar DataFrame
-    df_tickers = pd.DataFrame(dividend_data)
+        if navegador.find_elements(By.ID, "resultado"):
+            proventos = get_proventos_selenium(navegador)
 
-    # Exclui a coluna "Ticker" do DataFrame
-    df_tickers = df_tickers.drop(columns=["Ticker"])
+            # Organiza os proventos por ano
+            proventos_por_ano = {}
+            for ano, valor in proventos:
+                if ano not in proventos_por_ano:
+                    proventos_por_ano[ano] = 0
+                proventos_por_ano[ano] += valor
 
-    # Atualizar os dados da planilha
-    data = df_tickers.values.tolist()
-    for i, row in enumerate(data, start=start_update_row):
-        # Atualizar colunas C-E com os dados
-        cells = sheet.range(f'C{i + 1}:E{i + 1}')
-        for j, cell in enumerate(cells):
-            cell_value = row[j]
-            cell.value = '' if cell_value is None else str(cell_value).replace('.', ',')
-        sheet.update_cells(cells)
+            # Obter os proventos para os períodos solicitados
+            ano_corrente = int(time.strftime("%Y"))
+            proventos_1y = proventos_por_ano.get(ano_corrente - 1, 0)
+            proventos_6y = sum(proventos_por_ano.get(ano, 0) for ano in range((ano_corrente - 1) - 6, ano_corrente)) / 6
+            # proventos_max = sum(proventos_por_ano.values())
+
+            # Atualiza as colunas C-E com os proventos
+            cells = sheet.range(f'C{start_update_row + 1}:E{start_update_row + 1}')
+            for j, cell in enumerate(cells):
+                if j == 0:
+                    cell.value = str(proventos_1y).replace('.', ',')
+                elif j == 1:
+                    cell.value = str(proventos_6y).replace('.', ',')
+                # elif j == 2:
+                #     cell.value = str(proventos_max).replace('.', ',')
+            sheet.update_cells(cells)
+
+            start_update_row += 1
+        else:
+            cells = sheet.range(f'C{start_update_row + 1}:E{start_update_row + 1}')
+            for j, cell in enumerate(cells):
+                if j == 0:
+                    cell.value = str(0).replace('.', ',')
+                elif j == 1:
+                    cell.value = str(0).replace('.', ',')
+                # elif j == 2:
+                #     cell.value = str(proventos_max).replace('.', ',')
+            sheet.update_cells(cells)
+
+            start_update_row += 1

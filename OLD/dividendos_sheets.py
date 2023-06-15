@@ -9,7 +9,7 @@ import yfinance as yf
 
 # Estabelece a conexão com a planilha do Google
 def conn_sheet():
-    KEY_FILE = 'C:\\Users\\mrcr\\Documents\\projetos_python\\AcoesPrecoJusto\\acoessempre-2a81866e7af2.json'
+    KEY_FILE = '/acoessempre-2a81866e7af2.json'
     SHEET_SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
     credentials = service_account.Credentials.from_service_account_file(KEY_FILE, scopes=SHEET_SCOPES)
