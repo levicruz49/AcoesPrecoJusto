@@ -22,23 +22,98 @@ def conn_sheet():
 
 
 def get_dados_fundamentalistas_selenium(navegador):
-
-   # Deixa o tempo para a página recarregar
+    # Deixa o tempo para a página recarregar
     time.sleep(2)
 
-    if navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[4]/tbody/tr[3]/td[3]/span[2]").text == 'Dív. Líquida':
+    # Cotação do ativo
+    cotacao = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[1]/tbody/tr[1]/td[4]/span").text
+    cotacao = cotacao.replace(",","")
+
+    # Divida liquida / patrimonio liquido
+    if navegador.find_element(By.XPATH,
+                              "/html/body/div[1]/div[2]/table[4]/tbody/tr[3]/td[3]/span[2]").text == 'Dív. Líquida':
         div_liq = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[4]/tbody/tr[3]/td[4]/span").text
         patr_liq = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[4]/tbody/tr[4]/td[4]/span").text
         div_liq = div_liq.replace('.', '')
         patr_liq = patr_liq.replace('.', '')
 
         # Realiza a divisão
-        div_liq_patr_liq = round(float(div_liq) / float(patr_liq),2)
+        div_liq_patr_liq = round(float(div_liq) / float(patr_liq), 2)
     else:
         div_liq_patr_liq = 0
 
-    return div_liq_patr_liq
+    # ROA
+    if navegador.find_element(By.XPATH,
+                              "/html/body/div[1]/div[2]/table[5]/tbody/tr[5]/td[1]/span[2]").text == 'Lucro Líquido':
+        lucro_liq = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[5]/tbody/tr[5]/td[2]/span").text
+    else:
+        lucro_liq = 0
 
+    if navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[4]/tbody/tr[2]/td[1]/span[2]").text == "Ativo":
+        ativo = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[4]/tbody/tr[2]/td[2]/span").text
+    else:
+        ativo = 0
+
+    lucro_liq = lucro_liq.replace(".", "")
+    ativo = ativo.replace(".", "")
+
+    # Realiza a divisão
+    roa = round((float(lucro_liq) / float(ativo)) * 100,2)
+
+    # Liquidez corrente
+    if navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[3]/tbody/tr[10]/td[5]/span[2]").text == 'Liquidez Corr':
+        liqu_corrente = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[3]/tbody/tr[10]/td[6]/span").text
+    else:
+        liqu_corrente = 0
+
+    # P/VP
+    if navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[3]/tbody/tr[3]/td[3]/span[2]").text == 'P/VP':
+        p_vp = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[3]/tbody/tr[3]/td[4]/span").text
+    else:
+        p_vp = 0
+
+    # EY -> EBIT / EV
+    if navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[5]/tbody/tr[4]/td[1]/span[2]").text == 'EBIT':
+        ebit = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[5]/tbody/tr[4]/td[2]/span").text
+    else:
+        ebit = "-"
+
+    if navegador.find_element(By.XPATH,
+                              "/html/body/div[1]/div[2]/table[2]/tbody/tr[2]/td[1]/span[2]").text == 'Valor da firma':
+        vl_firma = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[2]/tbody/tr[2]/td[2]/span").text
+
+        if vl_firma == "0" or vl_firma == '-':
+            vl_firma = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[2]/tbody/tr[1]/td[2]/span").text # VALOR DE MERCADO
+    else:
+        vl_firma = 0
+
+    ebit = str(ebit).replace(".", "")
+    vl_firma = str(vl_firma).replace(".", "")
+
+    # Faz o calculo no modo padrão do Ebit/Ev
+    if ebit == '-':
+        if navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[3]/tbody/tr[2]/td[5]/span[2]").text == 'LPA':
+            lpa = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/table[3]/tbody/tr[2]/td[6]/span").text
+        else:
+            lpa = 0
+
+        lpa = lpa.replace(",","")
+
+        # Realiza a divisão
+        ey = round(float(lpa) / float(cotacao) * 100, 2)
+    else:
+    # Realiza a divisão
+        ey = round(float(ebit) / float(vl_firma) * 100, 2)
+
+    dados = {
+        'div_liq_patr_liq': div_liq_patr_liq,
+        'roa': roa,
+        'liqu_corrente': liqu_corrente,
+        'p_vp': p_vp,
+        'ey' : ey
+    }
+
+    return dados
 
 if __name__ == "__main__":
     sheet_id = '1_pZOasF7mjs-JtibgEusc1Bh80i2IQOcsEW0mCBoEHo'
@@ -61,14 +136,18 @@ if __name__ == "__main__":
         navegador.get(url)
         dados = get_dados_fundamentalistas_selenium(navegador)
 
-        # Atualiza as colunas C-E com os proventos
-        cells = sheet.range(f'B{start_update_row + 1}:E{start_update_row + 1}')
+        # Atualiza as colunas C-E com os valores dos dados
+        cells = sheet.range(f'B{start_update_row + 1}:F{start_update_row + 1}')
         for j, cell in enumerate(cells):
             if j == 0:
-                cell.value = str(dados).replace('.', ',')
-            # elif j == 1:
-            #     cell.value = str(dados).replace('.', ',')
-            # elif j == 2:
-            #     cell.value = str(proventos_max).replace('.', ',')
+                cell.value = str(dados['div_liq_patr_liq']).replace('.', ',')
+            elif j == 1:
+                cell.value = str(dados['roa']).replace('.', ',')
+            elif j == 2:
+                cell.value = str(dados['liqu_corrente']).replace('.', ',')
+            elif j == 3:
+                cell.value = str(dados['p_vp']).replace('.', ',')
+            elif j == 4:
+                cell.value = str(dados['ey']).replace('.', ',')
         sheet.update_cells(cells)
         start_update_row += 1
