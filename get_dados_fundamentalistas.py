@@ -121,12 +121,12 @@ if __name__ == "__main__":
     gc = conn_sheet()
     sheet = gc.open_by_key(sheet_id).worksheet(sheet_name)
 
-    # Pega todos os tickers da planilha que não têm dados na coluna C
+    # Pega todos os tickers da planilha
     all_values = sheet.get_all_values()
-    tickers = [row[0] for row in all_values[1:] if not row[1]]
+    tickers = [row[0] for row in all_values[1:]]
 
-    # Encontra a primeira linha vazia na coluna B
-    start_update_row = next((i for i, row in enumerate(all_values[1:], start=1) if not row[1]), None)
+    # Pega a primeira linha vazia, o que não é mais necessario
+    start_update_row = next((i for i, row in enumerate(all_values[1:], start=1)), None)
 
     servico = Service(ChromeDriverManager().install())
     navegador = webdriver.Chrome(service=servico)
