@@ -50,13 +50,14 @@ if __name__ == "__main__":
     gc = conn_sheet()
     sheet = gc.open_by_key(sheet_id).worksheet(sheet_name)
 
-    # Pega todos os tickers da planilha que não têm dados nas colunas C, D e E
+    # Pega todos os tickers da planilha
     all_values = sheet.get_all_values()
-    tickers = [row[0] for row in all_values[1:] if not (row[2] and row[3] and row[4])]
+    # tickers = [row[0] for row in all_values[1:] if not (row[2] and row[3] and row[4])]
+    tickers = [row[0] for row in all_values[1:]]
 
     # Encontra a primeira linha vazia nas colunas C, D e E
-    start_update_row = next((i for i, row in enumerate(all_values[2:], start=2) if not (row[2] and row[3] and row[4])),
-                            None)
+    # start_update_row = next((i for i, row in enumerate(all_values[2:], start=2) if not (row[2] and row[3] and row[4])), None)
+    start_update_row = next((i for i, row in enumerate(all_values[2:], start=2)),None)
 
     servico = Service(ChromeDriverManager().install())
     navegador = webdriver.Chrome(service=servico)
