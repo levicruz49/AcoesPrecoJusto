@@ -17,7 +17,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # Estabelece a conexão com a planilha do Google
 def conn_sheet():
-    KEY_FILE = 'C:\\Users\\mrcr\\Documents\\projetos_python\\AcoesPrecoJusto\\acoessempre-2a81866e7af2.json'
+    KEY_FILE = '/acoessempre-2a81866e7af2.json'
     SHEET_SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
     credentials = service_account.Credentials.from_service_account_file(KEY_FILE, scopes=SHEET_SCOPES)
@@ -237,33 +237,52 @@ def modela_e_verifica_crescente_2(gc, sheet_id, tickers, col_acoes, col_ticker):
     acoes_sheet.update_cells(cells_to_update)
 
 
-def modela_e_verifica_crescente(gc, sheet_id, tickers, modelo ,col_acoes, col_ticker):
+def modela_e_verifica_crescente(gc, sheet_id, tickers,ticker_sheets, modelo ,col_acoes, col_ticker):
     acoes_sheet = gc.open_by_key(sheet_id).worksheet('Açoes')
 
     ticker_rows = {ticker: acoes_sheet.find(ticker).row for ticker in tickers}
 
-    ticker_sheets = []
-    for ticker in tickers:
-        ticker_sheet = gc.open_by_key(sheet_id).worksheet(ticker)
-        ticker_sheets.append(ticker_sheet)
-
     cells_to_update = []
 
     for ticker, ticker_sheet in zip(tickers, ticker_sheets):
-        data = ticker_sheet.col_values(col_ticker)[1:12]
-        # data = [float(x.strip('%')) if x != '' and x != '-' else None for x in data]
-        data = [float(x.replace(',', '.').strip('% ').replace('-', '0')) if x != '' else None for x in data]
+        try:
+            time.sleep(2)
+            data = ticker_sheet.col_values(col_ticker)[1:12]
+        except:
+            data = ticker_sheet.col_values(col_ticker)[1:12]
+
+        if modelo == 'Receita' or modelo == 'Lucro Liquido':
+            data = [int(x.replace('.', '')) if x != '' and x != '-' else None for x in data]
+        else:
+            data = [float(x.replace(',', '.').strip('% ').replace('-', '0')) if x != '' else None for x in data]
 
         if all(x is None for x in data):
-            cell = gspread.Cell(row=ticker_rows[ticker], col=col_acoes, value="NAO")
+            time.sleep(2)
+            try:
+                cell = gspread.Cell(row=ticker_rows[ticker], col=col_acoes, value="NAO")
+            except:
+                cell = gspread.Cell(row=ticker_rows[ticker], col=col_acoes, value="NAO")
             cells_to_update.append(cell)
         else:
-            # Crie um dicionário de dados de ROIC com o ano como chave
-            roic_data = {i + 2013: data[i] for i in range(len(data))}
-            roic_ok = roic_is_ok(roic_data)
+            if modelo == "ROIC":
+                # Crie um dicionário de dados de ROIC com o ano como chave
+                roic_data = {i + 2013: data[i] for i in range(len(data))}
+                roic_ok = roic_is_ok(roic_data)
+                if roic_ok:
+                    # Continue com a modelagem estatística se o ROIC estiver OK
+                    data = np.array(data).astype(float)
+                    model_sarima, model_exp_smoothing = model_receita(data)
+                    sarima_forecast = model_sarima.forecast(steps=5)
+                    exp_smoothing_forecast = model_exp_smoothing.forecast(steps=5)
+                    crescente_sarima = sarima_forecast[0] > data[-1]
+                    crescente_exp_smoothing = exp_smoothing_forecast[0] > data[-1]
+                    crescente = crescente_sarima or crescente_exp_smoothing
 
-            if roic_ok:
-                # Continue com a modelagem estatística se o ROIC estiver OK
+                    cell = gspread.Cell(row=ticker_rows[ticker], col=col_acoes,
+                                        value="SIM" if roic_ok and crescente else "NAO")
+
+                    cells_to_update.append(cell)
+            else:
                 data = np.array(data).astype(float)
                 model_sarima, model_exp_smoothing = model_receita(data)
                 sarima_forecast = model_sarima.forecast(steps=5)
@@ -272,49 +291,10 @@ def modela_e_verifica_crescente(gc, sheet_id, tickers, modelo ,col_acoes, col_ti
                 crescente_exp_smoothing = exp_smoothing_forecast[0] > data[-1]
                 crescente = crescente_sarima or crescente_exp_smoothing
 
-            cell = gspread.Cell(row=ticker_rows[ticker], col=col_acoes, value="SIM" if roic_ok and crescente else "NAO")
-            cells_to_update.append(cell)
+                cell = gspread.Cell(row=ticker_rows[ticker], col=col_acoes, value="SIM" if crescente else "NAO")
+                cells_to_update.append(cell)
 
     acoes_sheet.update_cells(cells_to_update)
-
-
-# def modela_e_verifica_crescente(gc, sheet_id, tickers, campo, col_acoes, col_ticker):
-#     acoes_sheet = gc.open_by_key(sheet_id).worksheet('Açoes')
-#
-#     ticker_rows = {ticker: acoes_sheet.find(ticker).row for ticker in tickers}
-#
-#     ticker_sheets = []
-#     for ticker in tickers:
-#         ticker_sheet = gc.open_by_key(sheet_id).worksheet(ticker)
-#         ticker_sheets.append(ticker_sheet)
-#
-#     cells_to_update = []
-#
-#     for ticker, ticker_sheet in zip(tickers, ticker_sheets):
-#         data = ticker_sheet.col_values(col_ticker)[1:12]
-#         data = [int(x.replace('.', '')) if x != '' and x != '-' else None for x in data]
-#
-#         if all(x is None for x in data):
-#             cell = gspread.Cell(row=ticker_rows[ticker], col=col_acoes, value="NAO")
-#             cells_to_update.append(cell)
-#         else:
-#             data = [x for x in data if x is not None]
-#             data = np.array(data).astype(float)
-#
-#             model_sarima, model_exp_smoothing = model_receita(data)
-#
-#             sarima_forecast = model_sarima.forecast(steps=5)
-#             exp_smoothing_forecast = model_exp_smoothing.forecast(steps=5)
-#
-#             crescente_sarima = sarima_forecast[0] > data[-1]
-#             crescente_exp_smoothing = exp_smoothing_forecast[0] > data[-1]
-#
-#             crescente = crescente_sarima or crescente_exp_smoothing
-#
-#             cell = gspread.Cell(row=ticker_rows[ticker], col=col_acoes, value="SIM" if crescente else "NAO")
-#             cells_to_update.append(cell)
-#
-#     acoes_sheet.update_cells(cells_to_update)
 
 
 def config_ini():
@@ -327,7 +307,7 @@ def config_ini():
 
     # Verifica se existe um arquivo de tickers processados
     try:
-        with open('tickers_processed.json', 'r') as f:
+        with open('../tickers_processed.json', 'r') as f:
             tickers_processed = json.load(f)
     except FileNotFoundError:
         tickers_processed = []
@@ -356,7 +336,7 @@ def config_ini():
 
                         # Adiciona o ticker à lista de tickers processados e salva no arquivo
                         tickers_processed.append(ticker)
-                        with open('tickers_processed.json', 'w') as f:
+                        with open('../tickers_processed.json', 'w') as f:
                             json.dump(tickers_processed, f)
 
                     except Exception as e:
@@ -383,11 +363,16 @@ def config_ini():
         except FileNotFoundError:
             tickers_verified = []
 
+        ticker_sheets = []
+        for ticker in all_tickers:
+            ticker_sheet = gc.open_by_key(sheet_id).worksheet(ticker)
+            ticker_sheets.append(ticker_sheet)
+
         # Pega os tickers que ainda não foram verificados
         tickers_to_verify = [ticker for ticker in all_tickers if ticker not in tickers_verified]
-        modela_e_verifica_crescente(gc, sheet_id, tickers_to_verify, 'Receita', 8, 2)
-        modela_e_verifica_crescente(gc, sheet_id, tickers_to_verify, 'Lucro Liquido', 9, 5)
-        modela_e_verifica_crescente(gc, sheet_id, tickers_to_verify, 'ROIC', 10, 15)
+        modela_e_verifica_crescente(gc, sheet_id, tickers_to_verify, ticker_sheets, 'Receita', 8, 2)
+        modela_e_verifica_crescente(gc, sheet_id, tickers_to_verify, ticker_sheets, 'Lucro Liquido', 9, 5)
+        modela_e_verifica_crescente(gc, sheet_id, tickers_to_verify, ticker_sheets, 'ROIC', 10, 15)
 
         # for ticker in tickers_to_verify:
         #     # Verifica a receita para cada ticker
