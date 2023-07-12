@@ -29,7 +29,7 @@ def config_ini_cotacao():
     all_tickers = get_tickers()
 
     try:
-        with open('last_update_cotacao.json', 'r') as f:
+        with open('JSONS/last_update_cotacao.json', 'r') as f:
             last_update = datetime.datetime.strptime(json.load(f), '%Y-%m-%d')
     except FileNotFoundError:
         last_update = datetime.datetime(2000, 1, 1)
@@ -40,7 +40,7 @@ def config_ini_cotacao():
             update_cotacao(ticker)
 
         # Atualizando a data da última atualização
-        with open('last_update_cotacao.json', 'w') as f:
+        with open('JSONS/last_update_cotacao.json', 'w') as f:
             json.dump(str(today), f)
 
 

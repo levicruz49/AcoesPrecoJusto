@@ -307,7 +307,7 @@ def config_ini():
 
     # Verifica se existe um arquivo de tickers processados
     try:
-        with open('../tickers_processed.json', 'r') as f:
+        with open('../JSONS/tickers_processed.json', 'r') as f:
             tickers_processed = json.load(f)
     except FileNotFoundError:
         tickers_processed = []
@@ -336,7 +336,7 @@ def config_ini():
 
                         # Adiciona o ticker à lista de tickers processados e salva no arquivo
                         tickers_processed.append(ticker)
-                        with open('../tickers_processed.json', 'w') as f:
+                        with open('../JSONS/tickers_processed.json', 'w') as f:
                             json.dump(tickers_processed, f)
 
                     except Exception as e:

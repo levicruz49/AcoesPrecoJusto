@@ -40,7 +40,7 @@ def config_ini():
 
     # Verifica se existe um arquivo de tickers processados
     try:
-        with open('tickers_processed_dividends.json', 'r') as f:
+        with open('JSONS/tickers_processed_dividends.json', 'r') as f:
             tickers_processed = json.load(f)
     except FileNotFoundError:
         tickers_processed = []
@@ -85,7 +85,7 @@ def config_ini():
 
                 # Atualizando a lista de tickers processados
                 tickers_processed.append(ticker)
-                with open('tickers_processed_dividends.json', 'w') as f:
+                with open('JSONS/tickers_processed_dividends.json', 'w') as f:
                     json.dump(tickers_processed, f)
 
 
