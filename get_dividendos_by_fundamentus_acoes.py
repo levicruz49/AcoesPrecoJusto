@@ -1,3 +1,4 @@
+import json
 import time
 
 from bs4 import BeautifulSoup
@@ -7,15 +8,16 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
-import json
 
-from cotacao_acao import config_ini_cotacao
-from facade import get_tickers, conexao_pg
+from facade import get_tickers, atualiza_dividendos
 
 
 def get_proventos_selenium(navegador, ticker):
     # Marca o checkbox "chbAgruparAno"
-    WebDriverWait(navegador, 10).until(EC.presence_of_element_located((By.ID, "chbAgruparAno"))).click()
+    try:
+        WebDriverWait(navegador, 3).until(EC.presence_of_element_located((By.ID, "chbAgruparAno"))).click()
+    except:
+        return [['2023', '0'], ['2022', '0'], ['2021', '0'], ['2020', '0']]
 
     # Deixa o tempo para a página recarregar
     time.sleep(2)
@@ -35,7 +37,7 @@ def get_proventos_selenium(navegador, ticker):
     return proventos
 
 
-def config_ini():
+def config_ini_dividendos():
     all_tickers = get_tickers()
 
     # Verifica se existe um arquivo de tickers processados
@@ -66,29 +68,11 @@ def config_ini():
                                               time.strftime("%Y"))]) / 6, 2)
                 proventos_max = round(sum([float(p[1].replace(',', '.')) if len(p) > 1 else 0 for p in proventos]), 2)
 
-                # Abrindo a conexão com o PostgreSQL
-                conn = conexao_pg()
-                cur = conn.cursor()
-
-                # Atualizando a tabela
-                update_query = """
-                                    UPDATE Acoes 
-                                    SET div_12_meses = %s, med_div_6_anos = %s, maximo_div = %s
-                                    WHERE ticker = %s
-                                    """
-                cur.execute(update_query, (proventos_1y, proventos_6y, proventos_max, ticker))
-
-                # Fechando a conexão
-                conn.commit()
-                cur.close()
-                conn.close()
+                # atualizizando no banco
+                atualiza_dividendos(proventos_1y, proventos_6y, proventos_max, ticker)
 
                 # Atualizando a lista de tickers processados
                 tickers_processed.append(ticker)
                 with open('JSONS/tickers_processed_dividends.json', 'w') as f:
                     json.dump(tickers_processed, f)
 
-
-if __name__ == "__main__":
-    config_ini_cotacao()
-    config_ini()

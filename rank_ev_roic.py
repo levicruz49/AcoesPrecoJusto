@@ -28,7 +28,7 @@ def rank_ev_roic():
     num_years = 5
 
     # Obter a lista de ações únicas
-    tickers = ["AURE3","ABCB4","CXSE3","BBAS3","BBSE3"] # df['acao'].unique()
+    tickers = df['acao'].unique()
 
     # Criar DataFrame para armazenar classificações de empresas
     ranking_df = pd.DataFrame(columns=['acao', 'e_y', 'roic_score'])

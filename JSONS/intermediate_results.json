@@ -1,0 +1,682 @@
+[
+  {
+    "ticker": "ITSA4",
+    "e_y": 11.215131329714275,
+    "roic_score": 16.137365678997533,
+    "rank_e_y": 24.0,
+    "rank_roic": 41.0,
+    "rank_total": 65.0
+  },
+  {
+    "ticker": "UNIP3",
+    "e_y": 17.599167040245263,
+    "roic_score": 38.949967997206805,
+    "rank_e_y": 12.0,
+    "rank_roic": 11.5,
+    "rank_total": 23.5
+  },
+  {
+    "ticker": "SUZB3",
+    "e_y": 9.908927637486196,
+    "roic_score": 20.73609337537272,
+    "rank_e_y": 30.0,
+    "rank_roic": 28.0,
+    "rank_total": 58.0
+  },
+  {
+    "ticker": "SAPR4",
+    "e_y": 16.216954684489842,
+    "roic_score": 32.41931093881871,
+    "rank_e_y": 13.5,
+    "rank_roic": 19.5,
+    "rank_total": 33.0
+  },
+  {
+    "ticker": "CPLE6",
+    "e_y": 6.942233806004731,
+    "roic_score": 10.956621141932823,
+    "rank_e_y": 55.5,
+    "rank_roic": 60.5,
+    "rank_total": 116.0
+  },
+  {
+    "ticker": "NEOE3",
+    "e_y": 9.379919337505212,
+    "roic_score": 9.209921033931737,
+    "rank_e_y": 35.0,
+    "rank_roic": 71.0,
+    "rank_total": 106.0
+  },
+  {
+    "ticker": "CMIN3",
+    "e_y": 25.61557764687002,
+    "roic_score": 33.56623013118212,
+    "rank_e_y": 5.0,
+    "rank_roic": 16.0,
+    "rank_total": 21.0
+  },
+  {
+    "ticker": "KLBN11",
+    "e_y": 9.354344566162148,
+    "roic_score": 9.366590675450299,
+    "rank_e_y": 36.5,
+    "rank_roic": 69.0,
+    "rank_total": 105.5
+  },
+  {
+    "ticker": "CMIG4",
+    "e_y": 11.817184616517237,
+    "roic_score": 11.406629314063062,
+    "rank_e_y": 22.0,
+    "rank_roic": 59.0,
+    "rank_total": 81.0
+  },
+  {
+    "ticker": "SANB4",
+    "e_y": -8.966457513584296e-10,
+    "roic_score": 14.310590397661949,
+    "rank_e_y": 80.0,
+    "rank_roic": 48.0,
+    "rank_total": 128.0
+  },
+  {
+    "ticker": "TASA4",
+    "e_y": 24.081484855433274,
+    "roic_score": 39.42107602623303,
+    "rank_e_y": 6.0,
+    "rank_roic": 10.0,
+    "rank_total": 16.0
+  },
+  {
+    "ticker": "BRSR6",
+    "e_y": -1.576538086322397e-08,
+    "roic_score": 12.904468549716574,
+    "rank_e_y": 83.0,
+    "rank_roic": 55.0,
+    "rank_total": 138.0
+  },
+  {
+    "ticker": "ASAI3",
+    "e_y": 8.47518041622163,
+    "roic_score": 14.871832754957971,
+    "rank_e_y": 47.0,
+    "rank_roic": 45.0,
+    "rank_total": 92.0
+  },
+  {
+    "ticker": "SLCE3",
+    "e_y": 10.534608388740185,
+    "roic_score": 545.8293470533437,
+    "rank_e_y": 25.0,
+    "rank_roic": 2.0,
+    "rank_total": 27.0
+  },
+  {
+    "ticker": "CSMG3",
+    "e_y": 10.2018387804689,
+    "roic_score": 574.7274179231653,
+    "rank_e_y": 27.0,
+    "rank_roic": 1.0,
+    "rank_total": 28.0
+  },
+  {
+    "ticker": "CPLE3",
+    "e_y": 6.942233806004731,
+    "roic_score": 10.956621141932823,
+    "rank_e_y": 55.5,
+    "rank_roic": 60.5,
+    "rank_total": 116.0
+  },
+  {
+    "ticker": "BBSE3",
+    "e_y": 9.953657357296951,
+    "roic_score": 10.956621141932823,
+    "rank_e_y": 29.0,
+    "rank_roic": NaN,
+    "rank_total": NaN
+  },
+  {
+    "ticker": "SANB3",
+    "e_y": -8.966457513584296e-10,
+    "roic_score": 14.310590397661949,
+    "rank_e_y": 80.0,
+    "rank_roic": 48.0,
+    "rank_total": 128.0
+  },
+  {
+    "ticker": "VALE3",
+    "e_y": 19.94437150667629,
+    "roic_score": 14.310590397661949,
+    "rank_e_y": 9.0,
+    "rank_roic": NaN,
+    "rank_total": NaN
+  },
+  {
+    "ticker": "TASA3",
+    "e_y": 23.26791383754164,
+    "roic_score": 35.78496587349471,
+    "rank_e_y": 7.0,
+    "rank_roic": 15.0,
+    "rank_total": 22.0
+  },
+  {
+    "ticker": "MRFG3",
+    "e_y": 13.930886612474996,
+    "roic_score": 16.411940385438296,
+    "rank_e_y": 18.0,
+    "rank_roic": 40.0,
+    "rank_total": 58.0
+  },
+  {
+    "ticker": "BRAP3",
+    "e_y": 35.073702069252825,
+    "roic_score": 36.330175033270706,
+    "rank_e_y": 2.5,
+    "rank_roic": 13.5,
+    "rank_total": 16.0
+  },
+  {
+    "ticker": "GMAT3",
+    "e_y": 4.169795821546376,
+    "roic_score": 9.716642640034737,
+    "rank_e_y": 65.0,
+    "rank_roic": 67.0,
+    "rank_total": 132.0
+  },
+  {
+    "ticker": "RANI3",
+    "e_y": 9.468404155528447,
+    "roic_score": 21.84112553269752,
+    "rank_e_y": 33.0,
+    "rank_roic": 27.0,
+    "rank_total": 60.0
+  },
+  {
+    "ticker": "KLBN3",
+    "e_y": 9.354344566162148,
+    "roic_score": 9.366590675450299,
+    "rank_e_y": 36.5,
+    "rank_roic": 69.0,
+    "rank_total": 105.5
+  },
+  {
+    "ticker": "TIMS3",
+    "e_y": 7.466179055609536,
+    "roic_score": 60.97942847734453,
+    "rank_e_y": 51.0,
+    "rank_roic": 6.0,
+    "rank_total": 57.0
+  },
+  {
+    "ticker": "TRPL4",
+    "e_y": 13.32670856440685,
+    "roic_score": 15.316772693508875,
+    "rank_e_y": 19.0,
+    "rank_roic": 43.0,
+    "rank_total": 62.0
+  },
+  {
+    "ticker": "BBAS3",
+    "e_y": -7.206057042599889e-10,
+    "roic_score": 32.5206689219321,
+    "rank_e_y": 78.0,
+    "rank_roic": 18.0,
+    "rank_total": 96.0
+  },
+  {
+    "ticker": "ROMI3",
+    "e_y": 8.138880090099603,
+    "roic_score": 20.017701380893186,
+    "rank_e_y": 49.0,
+    "rank_roic": 31.0,
+    "rank_total": 80.0
+  },
+  {
+    "ticker": "CIEL3",
+    "e_y": 9.574519729506127,
+    "roic_score": 10.893586994797134,
+    "rank_e_y": 32.0,
+    "rank_roic": 62.0,
+    "rank_total": 94.0
+  },
+  {
+    "ticker": "CPFE3",
+    "e_y": 12.917986793994743,
+    "roic_score": 20.057743297403793,
+    "rank_e_y": 20.0,
+    "rank_roic": 30.0,
+    "rank_total": 50.0
+  },
+  {
+    "ticker": "AESB3",
+    "e_y": 2.9031872853679888,
+    "roic_score": -1.457384428223844,
+    "rank_e_y": 70.0,
+    "rank_roic": 77.0,
+    "rank_total": 147.0
+  },
+  {
+    "ticker": "WEGE3",
+    "e_y": 2.009477401440137,
+    "roic_score": 18.103441781374176,
+    "rank_e_y": 73.0,
+    "rank_roic": 36.0,
+    "rank_total": 109.0
+  },
+  {
+    "ticker": "PETR4",
+    "e_y": 22.68419810800576,
+    "roic_score": 18.54625647439882,
+    "rank_e_y": 8.0,
+    "rank_roic": 35.0,
+    "rank_total": 43.0
+  },
+  {
+    "ticker": "TAEE11",
+    "e_y": 11.233275100699434,
+    "roic_score": 22.762770719999747,
+    "rank_e_y": 23.0,
+    "rank_roic": 26.0,
+    "rank_total": 49.0
+  },
+  {
+    "ticker": "BBDC3",
+    "e_y": -5.844261215426564e-10,
+    "roic_score": 9.017089011621987,
+    "rank_e_y": 76.0,
+    "rank_roic": 72.0,
+    "rank_total": 148.0
+  },
+  {
+    "ticker": "VIVT3",
+    "e_y": 8.80834888655694,
+    "roic_score": 50.71967328708271,
+    "rank_e_y": 43.0,
+    "rank_roic": 8.0,
+    "rank_total": 51.0
+  },
+  {
+    "ticker": "ALUP11",
+    "e_y": 15.419541488830808,
+    "roic_score": 14.519608880521496,
+    "rank_e_y": 15.0,
+    "rank_roic": 46.0,
+    "rank_total": 61.0
+  },
+  {
+    "ticker": "AURE3",
+    "e_y": 5.624444761660788,
+    "roic_score": 4.852016632016632,
+    "rank_e_y": 60.0,
+    "rank_roic": 76.0,
+    "rank_total": 136.0
+  },
+  {
+    "ticker": "KLBN4",
+    "e_y": 9.168826367218573,
+    "roic_score": 9.366590675450299,
+    "rank_e_y": 39.0,
+    "rank_roic": 69.0,
+    "rank_total": 108.0
+  },
+  {
+    "ticker": "CSAN3",
+    "e_y": 2.9273561570025466,
+    "roic_score": 17.194677989922074,
+    "rank_e_y": 69.0,
+    "rank_roic": 39.0,
+    "rank_total": 108.0
+  },
+  {
+    "ticker": "RADL3",
+    "e_y": 2.344535119118392,
+    "roic_score": 63.27444217220927,
+    "rank_e_y": 72.0,
+    "rank_roic": 5.0,
+    "rank_total": 77.0
+  },
+  {
+    "ticker": "ABCB4",
+    "e_y": -2.3792444233484772e-08,
+    "roic_score": 11.748122191451325,
+    "rank_e_y": 84.0,
+    "rank_roic": 57.0,
+    "rank_total": 141.0
+  },
+  {
+    "ticker": "CXSE3",
+    "e_y": 7.418455109782124,
+    "roic_score": 11.748122191451325,
+    "rank_e_y": 52.0,
+    "rank_roic": NaN,
+    "rank_total": NaN
+  },
+  {
+    "ticker": "EQPA3",
+    "e_y": 7.142935987627727,
+    "roic_score": 23.69282631281933,
+    "rank_e_y": 54.0,
+    "rank_roic": 23.0,
+    "rank_total": 77.0
+  },
+  {
+    "ticker": "UGPA3",
+    "e_y": 6.694128632283508,
+    "roic_score": 8.161996056036193,
+    "rank_e_y": 57.0,
+    "rank_roic": 73.0,
+    "rank_total": 130.0
+  },
+  {
+    "ticker": "RENT3",
+    "e_y": 2.3553466263096854,
+    "roic_score": 13.648153809990767,
+    "rank_e_y": 71.0,
+    "rank_roic": 51.0,
+    "rank_total": 122.0
+  },
+  {
+    "ticker": "REDE3",
+    "e_y": 10.20837227319088,
+    "roic_score": 19.0625399006575,
+    "rank_e_y": 26.0,
+    "rank_roic": 34.0,
+    "rank_total": 60.0
+  },
+  {
+    "ticker": "HYPE3",
+    "e_y": 5.5652479379555375,
+    "roic_score": 67.08093376385413,
+    "rank_e_y": 61.0,
+    "rank_roic": 4.0,
+    "rank_total": 65.0
+  },
+  {
+    "ticker": "RRRP3",
+    "e_y": 1.4209599180832877,
+    "roic_score": 67.08093376385413,
+    "rank_e_y": 74.0,
+    "rank_roic": NaN,
+    "rank_total": NaN
+  },
+  {
+    "ticker": "UNIP6",
+    "e_y": 18.38707435509263,
+    "roic_score": 38.949967997206805,
+    "rank_e_y": 11.0,
+    "rank_roic": 11.5,
+    "rank_total": 22.5
+  },
+  {
+    "ticker": "MULT3",
+    "e_y": 5.317159269040099,
+    "roic_score": 10.202058098055153,
+    "rank_e_y": 63.0,
+    "rank_roic": 64.0,
+    "rank_total": 127.0
+  },
+  {
+    "ticker": "RECV3",
+    "e_y": 5.316405529890282,
+    "roic_score": 10.8765751356452,
+    "rank_e_y": 64.0,
+    "rank_roic": 63.0,
+    "rank_total": 127.0
+  },
+  {
+    "ticker": "FESA4",
+    "e_y": 14.093029620816353,
+    "roic_score": 19.400768658326715,
+    "rank_e_y": 17.0,
+    "rank_roic": 32.0,
+    "rank_total": 49.0
+  },
+  {
+    "ticker": "CYRE3",
+    "e_y": 8.90950305736534,
+    "roic_score": 10.035525629250381,
+    "rank_e_y": 42.0,
+    "rank_roic": 66.0,
+    "rank_total": 108.0
+  },
+  {
+    "ticker": "ALSO3",
+    "e_y": 3.1302998265601385,
+    "roic_score": 10.035525629250381,
+    "rank_e_y": 68.0,
+    "rank_roic": NaN,
+    "rank_total": NaN
+  },
+  {
+    "ticker": "BRAP4",
+    "e_y": 35.073702069252825,
+    "roic_score": 36.330175033270706,
+    "rank_e_y": 2.5,
+    "rank_roic": 13.5,
+    "rank_total": 16.0
+  },
+  {
+    "ticker": "USIM5",
+    "e_y": 32.41116398056547,
+    "roic_score": 13.555319933628342,
+    "rank_e_y": 4.0,
+    "rank_roic": 52.0,
+    "rank_total": 56.0
+  },
+  {
+    "ticker": "EGIE3",
+    "e_y": 9.453711371766058,
+    "roic_score": 25.308492959434133,
+    "rank_e_y": 34.0,
+    "rank_roic": 22.0,
+    "rank_total": 56.0
+  },
+  {
+    "ticker": "SBSP3",
+    "e_y": 9.008146128829111,
+    "roic_score": 23.349575893898816,
+    "rank_e_y": 41.0,
+    "rank_roic": 25.0,
+    "rank_total": 66.0
+  },
+  {
+    "ticker": "ENGI11",
+    "e_y": 8.34422049127805,
+    "roic_score": 13.25113484968974,
+    "rank_e_y": 48.0,
+    "rank_roic": 53.0,
+    "rank_total": 101.0
+  },
+  {
+    "ticker": "CBAV3",
+    "e_y": 15.268020659791018,
+    "roic_score": 5.475169902912621,
+    "rank_e_y": 16.0,
+    "rank_roic": 75.0,
+    "rank_total": 91.0
+  },
+  {
+    "ticker": "BNBR3",
+    "e_y": -1.3156701977939106e-08,
+    "roic_score": 32.97095636274675,
+    "rank_e_y": 82.0,
+    "rank_roic": 17.0,
+    "rank_total": 99.0
+  },
+  {
+    "ticker": "ENMT4",
+    "e_y": 5.988083703550239,
+    "roic_score": 15.05655910446234,
+    "rank_e_y": 59.0,
+    "rank_roic": 44.0,
+    "rank_total": 103.0
+  },
+  {
+    "ticker": "EKTR3",
+    "e_y": 9.986107931217905,
+    "roic_score": 19.18345657428523,
+    "rank_e_y": 28.0,
+    "rank_roic": 33.0,
+    "rank_total": 61.0
+  },
+  {
+    "ticker": "PRIO3",
+    "e_y": 3.2524439819394555,
+    "roic_score": 19.18345657428523,
+    "rank_e_y": 67.0,
+    "rank_roic": NaN,
+    "rank_total": NaN
+  },
+  {
+    "ticker": "ITUB4",
+    "e_y": -3.7731267911150784e-10,
+    "roic_score": 20.541767421846007,
+    "rank_e_y": 75.0,
+    "rank_roic": 29.0,
+    "rank_total": 104.0
+  },
+  {
+    "ticker": "ABEV3",
+    "e_y": 7.556365781223372,
+    "roic_score": 20.541767421846007,
+    "rank_e_y": 50.0,
+    "rank_roic": NaN,
+    "rank_total": NaN
+  },
+  {
+    "ticker": "GGBR3",
+    "e_y": 19.358996364653557,
+    "roic_score": 92.22202177128277,
+    "rank_e_y": 10.0,
+    "rank_roic": 3.0,
+    "rank_total": 13.0
+  },
+  {
+    "ticker": "GOAU4",
+    "e_y": 55.06252391757488,
+    "roic_score": 28.344384849649632,
+    "rank_e_y": 1.0,
+    "rank_roic": 21.0,
+    "rank_total": 22.0
+  },
+  {
+    "ticker": "VBBR3",
+    "e_y": 9.248885634282818,
+    "roic_score": 12.5541219197446,
+    "rank_e_y": 38.0,
+    "rank_roic": 56.0,
+    "rank_total": 94.0
+  },
+  {
+    "ticker": "SANB11",
+    "e_y": -8.966457513584296e-10,
+    "roic_score": 14.310590397661949,
+    "rank_e_y": 80.0,
+    "rank_roic": 48.0,
+    "rank_total": 128.0
+  },
+  {
+    "ticker": "BPAC11",
+    "e_y": -6.394599683831807e-10,
+    "roic_score": 15.581889102412623,
+    "rank_e_y": 77.0,
+    "rank_roic": 42.0,
+    "rank_total": 119.0
+  },
+  {
+    "ticker": "B3SA3",
+    "e_y": 5.392184603777495,
+    "roic_score": 42.85683837010349,
+    "rank_e_y": 62.0,
+    "rank_roic": 9.0,
+    "rank_total": 71.0
+  },
+  {
+    "ticker": "CEEB3",
+    "e_y": 8.531583080496606,
+    "roic_score": 13.240442768091581,
+    "rank_e_y": 45.0,
+    "rank_roic": 54.0,
+    "rank_total": 99.0
+  },
+  {
+    "ticker": "CRFB3",
+    "e_y": 9.880714480203496,
+    "roic_score": 55.89192612397047,
+    "rank_e_y": 31.0,
+    "rank_roic": 7.0,
+    "rank_total": 38.0
+  },
+  {
+    "ticker": "EQTL3",
+    "e_y": 6.010977943929176,
+    "roic_score": 17.466138553153964,
+    "rank_e_y": 58.0,
+    "rank_roic": 37.0,
+    "rank_total": 95.0
+  },
+  {
+    "ticker": "CCRO3",
+    "e_y": 9.140325149596642,
+    "roic_score": 10.12333853287984,
+    "rank_e_y": 40.0,
+    "rank_roic": 65.0,
+    "rank_total": 105.0
+  },
+  {
+    "ticker": "RDOR3",
+    "e_y": 3.4858192839742843,
+    "roic_score": 6.279535901985014,
+    "rank_e_y": 66.0,
+    "rank_roic": 74.0,
+    "rank_total": 140.0
+  },
+  {
+    "ticker": "ELET3",
+    "e_y": 8.529243915362077,
+    "roic_score": 17.287877718576365,
+    "rank_e_y": 46.0,
+    "rank_roic": 38.0,
+    "rank_total": 84.0
+  },
+  {
+    "ticker": "PSSA3",
+    "e_y": 8.71941312076952,
+    "roic_score": 11.615077075193096,
+    "rank_e_y": 44.0,
+    "rank_roic": 58.0,
+    "rank_total": 102.0
+  },
+  {
+    "ticker": "BAZA3",
+    "e_y": -3.6958110937900764e-08,
+    "roic_score": 23.520104458040112,
+    "rank_e_y": 85.0,
+    "rank_roic": 24.0,
+    "rank_total": 109.0
+  },
+  {
+    "ticker": "ENBR3",
+    "e_y": 11.867043018356735,
+    "roic_score": 13.938554305884304,
+    "rank_e_y": 21.0,
+    "rank_roic": 50.0,
+    "rank_total": 71.0
+  },
+  {
+    "ticker": "SAPR11",
+    "e_y": 16.216954684489842,
+    "roic_score": 32.41931093881871,
+    "rank_e_y": 13.5,
+    "rank_roic": 19.5,
+    "rank_total": 33.0
+  },
+  {
+    "ticker": "LREN3",
+    "e_y": 7.324137723104812,
+    "roic_score": 32.41931093881871,
+    "rank_e_y": 53.0,
+    "rank_roic": NaN,
+    "rank_total": NaN
+  }
+]

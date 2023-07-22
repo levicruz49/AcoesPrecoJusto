@@ -1,0 +1,382 @@
+{
+  "SAPR4": {
+    "valor_real_2022": 5674000000.0,
+    "meta_predicao_2022": "5533955722.88",
+    "Mean Squared Error": 1.961239955538794e+16
+  },
+  "VALE3": {
+    "valor_real_2022": 226508000000.0,
+    "meta_predicao_2022": "217158523782.72",
+    "Mean Squared Error": 8.741270553745406e+19
+  },
+  "TASA3": {
+    "valor_real_2022": 2540000000.0,
+    "meta_predicao_2022": "1882571739.36",
+    "Mean Squared Error": 4.32211917892078e+17
+  },
+  "BRSR6": {
+    "valor_real_2022": 12964000000.0,
+    "meta_predicao_2022": "-7785942408.76",
+    "Mean Squared Error": 4.3056010996685465e+20
+  },
+  "CMIG4": {
+    "valor_real_2022": 34463000000.0,
+    "meta_predicao_2022": "24364121681.31",
+    "Mean Squared Error": 1.0198734329577112e+20
+  },
+  "CMIN3": {
+    "valor_real_2022": 13273000000.0,
+    "meta_predicao_2022": "12296099645.00",
+    "Mean Squared Error": 9.543343036030911e+17
+  },
+  "CSMG3": {
+    "valor_real_2022": 6177000000.0,
+    "meta_predicao_2022": "6072208804.06",
+    "Mean Squared Error": 1.0981194746041098e+16
+  },
+  "CPLE3": {
+    "valor_real_2022": 21928000000.0,
+    "meta_predicao_2022": "20941278140.00",
+    "Mean Squared Error": 9.736200289981181e+17
+  },
+  "UNIP3": {
+    "valor_real_2022": 7270000000.0,
+    "meta_predicao_2022": "3967667806.34",
+    "Mean Squared Error": 1.0905397917268427e+19
+  },
+  "RANI3": {
+    "valor_real_2022": 1687000000.0,
+    "meta_predicao_2022": "1269003049.89",
+    "Mean Squared Error": 1.747214503012364e+17
+  },
+  "CPLE6": {
+    "valor_real_2022": 21928000000.0,
+    "meta_predicao_2022": "21928000536.94",
+    "Mean Squared Error": 288308.5521564401
+  },
+  "SANB4": {
+    "valor_real_2022": 99769000000.0,
+    "meta_predicao_2022": "99768952907.20",
+    "Mean Squared Error": 2217731810.6902733
+  },
+  "TRPL4": {
+    "valor_real_2022": 5451000000.0,
+    "meta_predicao_2022": "5293982723.27",
+    "Mean Squared Error": 2.465442519130514e+16
+  },
+  "TAEE11": {
+    "valor_real_2022": 2617000000.0,
+    "meta_predicao_2022": "2394749330.82",
+    "Mean Squared Error": 4.93953599521008e+16
+  },
+  "SLCE3": {
+    "valor_real_2022": 9590000000.0,
+    "meta_predicao_2022": "6070409076.41",
+    "Mean Squared Error": 1.2387520269389453e+19
+  },
+  "BBDC3": {
+    "valor_real_2022": 161579000000.0,
+    "meta_predicao_2022": "191789829146.63",
+    "Mean Squared Error": 9.126941977270165e+20
+  },
+  "TASA4": {
+    "valor_real_2022": 2540000000.0,
+    "meta_predicao_2022": "2435360724.23",
+    "Mean Squared Error": 1.0949378033210964e+16
+  },
+  "ASAI3": {
+    "valor_real_2022": 54520000000.0,
+    "meta_predicao_2022": "54519956152.76",
+    "Mean Squared Error": 1922580119.5642743
+  },
+  "ITSA4": {
+    "valor_real_2022": 8486000000.0,
+    "meta_predicao_2022": "8485999781.25",
+    "Mean Squared Error": 47850.630407104065
+  },
+  "NEOE3": {
+    "valor_real_2022": 42787000000.0,
+    "meta_predicao_2022": "42787001442.00",
+    "Mean Squared Error": 2079358.5872227608
+  },
+  "ROMI3": {
+    "valor_real_2022": 1592000000.0,
+    "meta_predicao_2022": "1591999985.63",
+    "Mean Squared Error": 206.44004148508088
+  },
+  "CSAN3": {
+    "valor_real_2022": 10299000000.0,
+    "meta_predicao_2022": "8647553875.09",
+    "Mean Squared Error": 2.727274303491506e+18
+  },
+  "ABCB4": {
+    "valor_real_2022": 4077000000.0,
+    "meta_predicao_2022": "5237420671.15",
+    "Mean Squared Error": 1.3465761340387095e+18
+  },
+  "MRFG3": {
+    "valor_real_2022": 130632000000.0,
+    "meta_predicao_2022": "164011580873.43",
+    "Mean Squared Error": 1.1141964192856517e+21
+  },
+  "RENT3": {
+    "valor_real_2022": 17784000000.0,
+    "meta_predicao_2022": "18953659602.66",
+    "Mean Squared Error": 1.3681035861050378e+18
+  },
+  "TIMS3": {
+    "valor_real_2022": 21531000000.0,
+    "meta_predicao_2022": "20536010931.84",
+    "Mean Squared Error": 9.900032457625507e+17
+  },
+  "RRRP3": {
+    "valor_real_2022": 1722000000.0,
+    "meta_predicao_2022": "3830753393.48",
+    "Mean Squared Error": 4.4468408745009956e+18
+  },
+  "GMAT3": {
+    "valor_real_2022": 21768000000.0,
+    "meta_predicao_2022": "21768003264.70",
+    "Mean Squared Error": 10658251.822883192
+  },
+  "VIVT3": {
+    "valor_real_2022": 48041000000.0,
+    "meta_predicao_2022": "45107111800.89",
+    "Mean Squared Error": 8.607699964858209e+18
+  },
+  "BBAS3": {
+    "valor_real_2022": 229638000000.0,
+    "meta_predicao_2022": "166718380409.23",
+    "Mean Squared Error": 3.95887852944718e+21
+  },
+  "CYRE3": {
+    "valor_real_2022": 5412000000.0,
+    "meta_predicao_2022": "5286068649.14",
+    "Mean Squared Error": 1.5858705130675032e+16
+  },
+  "REDE3": {
+    "valor_real_2022": 15120000000.0,
+    "meta_predicao_2022": "14492789506.58",
+    "Mean Squared Error": 3.933930030546646e+17
+  },
+  "KLBN3": {
+    "valor_real_2022": 20033000000.0,
+    "meta_predicao_2022": "20033000371.42",
+    "Mean Squared Error": 137952.24829846085
+  },
+  "MULT3": {
+    "valor_real_2022": 1798000000.0,
+    "meta_predicao_2022": "1874968417.83",
+    "Mean Squared Error": 5924137343128078.0
+  },
+  "CIEL3": {
+    "valor_real_2022": 6227000000.0,
+    "meta_predicao_2022": "6227000784.40",
+    "Mean Squared Error": 615289.7553494127
+  },
+  "ALUP11": {
+    "valor_real_2022": 3834000000.0,
+    "meta_predicao_2022": "5276261501.22",
+    "Mean Squared Error": 2.0801182379069064e+18
+  },
+  "ALSO3": {
+    "valor_real_2022": 1111000000.0,
+    "meta_predicao_2022": "1030205606.55",
+    "Mean Squared Error": 6527734013012971.0
+  },
+  "PETR4": {
+    "valor_real_2022": 641256000000.0,
+    "meta_predicao_2022": "686356100316.93",
+    "Mean Squared Error": 2.0340190485975398e+21
+  },
+  "SBSP3": {
+    "valor_real_2022": 22056000000.0,
+    "meta_predicao_2022": "23010657794.83",
+    "Mean Squared Error": 9.113715052313134e+17
+  },
+  "BNBR3": {
+    "valor_real_2022": 8223000000.0,
+    "meta_predicao_2022": "2794524667.17",
+    "Mean Squared Error": 2.9468344439169106e+19
+  },
+  "ITUB4": {
+    "valor_real_2022": 283372000000.0,
+    "meta_predicao_2022": "379772614381.96",
+    "Mean Squared Error": 9.293078453218922e+21
+  },
+  "SUZB3": {
+    "valor_real_2022": 49831000000.0,
+    "meta_predicao_2022": "46490597702.31",
+    "Mean Squared Error": 1.1158287510418612e+19
+  },
+  "WEGE3": {
+    "valor_real_2022": 29905000000.0,
+    "meta_predicao_2022": "38401935782.30",
+    "Mean Squared Error": 7.219791768848634e+19
+  },
+  "GOAU4": {
+    "valor_real_2022": 82412000000.0,
+    "meta_predicao_2022": "86277126149.25",
+    "Mean Squared Error": 1.4939200149613656e+19
+  },
+  "HYPE3": {
+    "valor_real_2022": 7546000000.0,
+    "meta_predicao_2022": "7545999005.61",
+    "Mean Squared Error": 988817.9707109132
+  },
+  "BPAC11": {
+    "valor_real_2022": 49629000000.0,
+    "meta_predicao_2022": "180274206167.45",
+    "Mean Squared Error": 1.7068169894534817e+22
+  },
+  "SANB3": {
+    "valor_real_2022": 99769000000.0,
+    "meta_predicao_2022": "99769087150.03",
+    "Mean Squared Error": 7595127353.783429
+  },
+  "FESA4": {
+    "valor_real_2022": 3139000000.0,
+    "meta_predicao_2022": "3139000225.65",
+    "Mean Squared Error": 50916.965137823805
+  },
+  "B3SA3": {
+    "valor_real_2022": 10111000000.0,
+    "meta_predicao_2022": "9699874128.31",
+    "Mean Squared Error": 1.6902448237518077e+17
+  },
+  "PRIO3": {
+    "valor_real_2022": 6363000000.0,
+    "meta_predicao_2022": "8443720659.92",
+    "Mean Squared Error": 4.329398464635311e+18
+  },
+  "EQTL3": {
+    "valor_real_2022": 27133000000.0,
+    "meta_predicao_2022": "21540127498.71",
+    "Mean Squared Error": 3.1280222815642477e+19
+  },
+  "ENGI11": {
+    "valor_real_2022": 26503000000.0,
+    "meta_predicao_2022": "23702630745.72",
+    "Mean Squared Error": 7.842067960331117e+18
+  },
+  "UGPA3": {
+    "valor_real_2022": 143635000000.0,
+    "meta_predicao_2022": "200072978518.85",
+    "Mean Squared Error": 3.185245419294571e+21
+  },
+  "EKTR3": {
+    "valor_real_2022": 8388000000.0,
+    "meta_predicao_2022": "8103749234.53",
+    "Mean Squared Error": 8.079849767264547e+16
+  },
+  "EGIE3": {
+    "valor_real_2022": 11907000000.0,
+    "meta_predicao_2022": "11906990496.90",
+    "Mean Squared Error": 90308886.85134138
+  },
+  "RADL3": {
+    "valor_real_2022": 29067000000.0,
+    "meta_predicao_2022": "21908220613.23",
+    "Mean Squared Error": 5.124812230850429e+19
+  },
+  "ELET3": {
+    "valor_real_2022": 34074000000.0,
+    "meta_predicao_2022": "31570398964.43",
+    "Mean Squared Error": 6.268018145283567e+18
+  },
+  "BAZA3": {
+    "valor_real_2022": 3202000000.0,
+    "meta_predicao_2022": "2850146470.26",
+    "Mean Squared Error": 1.238009063917945e+17
+  },
+  "SAPR11": {
+    "valor_real_2022": 5674000000.0,
+    "meta_predicao_2022": "5534416398.50",
+    "Mean Squared Error": 1.9483581807828744e+16
+  },
+  "LREN3": {
+    "valor_real_2022": 13271000000.0,
+    "meta_predicao_2022": "14455929191.91",
+    "Mean Squared Error": 1.404057189831436e+18
+  },
+  "CRFB3": {
+    "valor_real_2022": 102890000000.0,
+    "meta_predicao_2022": "126308840631.11",
+    "Mean Squared Error": 5.4844209650554805e+20
+  },
+  "GGBR3": {
+    "valor_real_2022": 82412000000.0,
+    "meta_predicao_2022": "82411999800.27",
+    "Mean Squared Error": 39891.84566843882
+  },
+  "CPFE3": {
+    "valor_real_2022": 39354000000.0,
+    "meta_predicao_2022": "39354004275.43",
+    "Mean Squared Error": 18279325.825534757
+  },
+  "SANB11": {
+    "valor_real_2022": 99769000000.0,
+    "meta_predicao_2022": "99768996779.39",
+    "Mean Squared Error": 10372357.86847613
+  },
+  "PSSA3": {
+    "valor_real_2022": 27724000000.0,
+    "meta_predicao_2022": "27723996172.36",
+    "Mean Squared Error": 14650825.833139641
+  },
+  "CCRO3": {
+    "valor_real_2022": 19182000000.0,
+    "meta_predicao_2022": "19182008804.22",
+    "Mean Squared Error": 77514212.7849283
+  },
+  "ABEV3": {
+    "valor_real_2022": 79709000000.0,
+    "meta_predicao_2022": "79709006267.26",
+    "Mean Squared Error": 39278505.18742138
+  },
+  "ENMT4": {
+    "valor_real_2022": 7132000000.0,
+    "meta_predicao_2022": "7131998790.26",
+    "Mean Squared Error": 1463476.2155948882
+  },
+  "CEEB3": {
+    "valor_real_2022": 13978000000.0,
+    "meta_predicao_2022": "13977999651.52",
+    "Mean Squared Error": 121441.66537268333
+  },
+  "KLBN4": {
+    "valor_real_2022": 20033000000.0,
+    "meta_predicao_2022": "20310968880.78",
+    "Mean Squared Error": 7.726669867996445e+16
+  },
+  "ENBR3": {
+    "valor_real_2022": 17288000000.0,
+    "meta_predicao_2022": "16691201417.95",
+    "Mean Squared Error": 3.5616854753096595e+17
+  },
+  "KLBN11": {
+    "valor_real_2022": 20033000000.0,
+    "meta_predicao_2022": "20032998488.90",
+    "Mean Squared Error": 2283429.4539904743
+  },
+  "VBBR3": {
+    "valor_real_2022": 181446000000.0,
+    "meta_predicao_2022": "181446082931.76",
+    "Mean Squared Error": 6877677081.528516
+  },
+  "EQPA3": {
+    "valor_real_2022": 8513000000.0,
+    "meta_predicao_2022": "8512997839.82",
+    "Mean Squared Error": 4666382.2936843475
+  },
+  "USIM5": {
+    "valor_real_2022": 32471000000.0,
+    "meta_predicao_2022": "32470997830.67",
+    "Mean Squared Error": 4705995.304952608
+  },
+  "UNIP6": {
+    "valor_real_2022": 7270000000.0,
+    "meta_predicao_2022": "7269999807.64",
+    "Mean Squared Error": 37002.26270079742
+  }
+}

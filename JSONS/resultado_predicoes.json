@@ -1,0 +1,94 @@
+{
+  "UNIP3": {
+    "valor_real_2022": 7270000000.0,
+    "ExponentialSmoothing": 5926593573.65017,
+    "Prophet": 3119237912.66979,
+    "meta_predicao_2022": 5760654390.799295
+  },
+  "metricas": {
+    "ExponentialSmoothing": {
+      "MAE": 9664098151.08796,
+      "RMSE": 27721609801.18732
+    },
+    "Prophet": {
+      "MAE": 10031816077.997477,
+      "RMSE": 20816340817.92198
+    },
+    "meta_predicao_2022": {
+      "MAE": 8363083184.166117,
+      "RMSE": 25058694113.757206
+    }
+  },
+  "TAEE11": {
+    "valor_real_2022": 2617000000.0,
+    "ExponentialSmoothing": 3472400829.6522336,
+    "Prophet": 2781552876.6886864,
+    "meta_predicao_2022": 3452855215.040045
+  },
+  "ALUP11": {
+    "valor_real_2022": 3834000000.0,
+    "ExponentialSmoothing": 5238495936.159424,
+    "Prophet": 4679189670.793926,
+    "meta_predicao_2022": 5595010463.5305395
+  },
+  "CMIG4": {
+    "valor_real_2022": 34463000000.0,
+    "ExponentialSmoothing": 33603916072.019615,
+    "Prophet": 27557684597.775097,
+    "meta_predicao_2022": 32891515571.183052
+  },
+  "CSAN3": {
+    "valor_real_2022": 10299000000.0,
+    "ExponentialSmoothing": 7953777031.728795,
+    "Prophet": 3738067131.961422,
+    "meta_predicao_2022": 2976611110.67284
+  },
+  "KLBN4": {
+    "valor_real_2022": 20033000000.0,
+    "ExponentialSmoothing": 16458298041.969097,
+    "Prophet": 10931201936.03844,
+    "meta_predicao_2022": 20204091064.18923
+  },
+  "VIVT3": {
+    "valor_real_2022": 48041000000.0,
+    "ExponentialSmoothing": 44028493449.21278,
+    "Prophet": 49475667104.15742,
+    "meta_predicao_2022": 46866091276.60538
+  },
+  "WEGE3": {
+    "valor_real_2022": 29905000000.0,
+    "ExponentialSmoothing": 23532431751.345764,
+    "Prophet": 14691793779.204063,
+    "meta_predicao_2022": 31178556512.77172
+  },
+  "TASA3": {
+    "valor_real_2022": 2540000000.0,
+    "ExponentialSmoothing": 2735145655.531672,
+    "Prophet": 1403189048.5422752,
+    "meta_predicao_2022": 4317018839.471209
+  },
+  "RADL3": {
+    "valor_real_2022": 29067000000.0,
+    "ExponentialSmoothing": 24106637128.37635,
+    "Prophet": 15874413479.852268,
+    "meta_predicao_2022": 28005497374.350113
+  },
+  "RANI3": {
+    "valor_real_2022": 1687000000.0,
+    "ExponentialSmoothing": 1603116729.2034934,
+    "Prophet": 1096020388.1239007,
+    "meta_predicao_2022": 1887532660.3267174
+  },
+  "ABCB4": {
+    "valor_real_2022": 4077000000.0,
+    "ExponentialSmoothing": 4278081996.1341653,
+    "Prophet": 4254389311.622964,
+    "meta_predicao_2022": 4173585880.255977
+  },
+  "BBAS3": {
+    "valor_real_2022": 229638000000.0,
+    "ExponentialSmoothing": 130212584675.82796,
+    "Prophet": 158698581675.12854,
+    "meta_predicao_2022": 139673199517.81525
+  }
+}

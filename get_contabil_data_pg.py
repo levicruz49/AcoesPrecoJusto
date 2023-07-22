@@ -151,49 +151,71 @@ def get_dados_fundamentalistas_selenium_inv_10(navegador):
 
     # PEGA O EV = VALOR DE FIRMA
     xpaths_descer_tela_ev = [
-        "/html/body/div[2]/div/main/section/div/div[12]/div[4]/div[1]/div/ul/li[2]/span/span[1]/span/span[1]",
-        "/html/body/div[2]/div/main/section/div/div[11]/div[4]/div[1]/div/ul/li[2]/span/span[1]/span/span[1]"]
+        '//*[starts-with(@id, "select2-company-values-view-")]'
+    ]
 
     for xpath in xpaths_descer_tela_ev:
         try:
             time.sleep(1)
             descer_tela_1 = WebDriverWait(navegador, 1).until(EC.presence_of_element_located((By.XPATH, xpath)))
             navegador.execute_script("arguments[0].scrollIntoView({block: 'center'});", descer_tela_1)
-            time.sleep(2)
+            time.sleep(1)
             break
         except Exception as e:
             pass
 
     # seleciona valores detalhados e pega os valores
-    try:
-        navegador.find_element(By.XPATH,
-                               "/html/body/div[2]/div/main/section/div/div[12]/div[4]/div[1]/div/ul/li[2]/span/span[1]/span").click()
-        navegador.find_element(By.XPATH, "/html/body/span/span/span[2]/ul/li[2]").click()
-        time.sleep(1)
-        valor_firma = navegador.find_element(By.XPATH,
-                                             "/html/body/div[2]/div/main/section/div/div[12]/div[4]/div[2]/div/div[2]/span[2]/div[2]").text
-        valor_mercado = navegador.find_element(By.XPATH,
-                                               "/html/body/div[2]/div/main/section/div/div[12]/div[4]/div[2]/div/div[1]/span[2]/div[2]").text
-    except:
-        navegador.find_element(By.XPATH,
-                               "/html/body/div[2]/div/main/section/div/div[11]/div[4]/div[1]/div/ul/li[2]/span/span[1]/span/span[1]").click()
-        navegador.find_element(By.XPATH, "/html/body/span/span/span[2]/ul/li[2]").click()
-        time.sleep(1)
-        valor_firma = navegador.find_element(By.XPATH,
-                                             "/html/body/div[2]/div/main/section/div/div[11]/div[4]/div[2]/div/div[2]/span[2]/div[2]").text
-        valor_mercado = navegador.find_element(By.XPATH,
-                                               "/html/body/div[2]/div/main/section/div/div[11]/div[4]/div[2]/div/div[1]/span[2]/div[2]").text
+    xpaths_valores_detalhados= [
+        '//*[starts-with(@id, "select2-company-values-view-")]'
+    ]
+
+    for xpath in xpaths_valores_detalhados:
+        try:
+            time.sleep(1)
+            WebDriverWait(navegador, 1).until(EC.presence_of_element_located((By.XPATH, xpath))).click()
+            time.sleep(1)
+            break
+        except Exception as e:
+            pass
+
+    navegador.find_element(By.XPATH, "/html/body/span/span/span[2]/ul/li[2]").click()
+
+    xpaths_valor_firma = [
+        "/html/body/div[2]/div/main/section/div/div[12]/div[4]/div[2]/div/div[2]/span[2]/div[2]",
+        "/html/body/div[2]/div/main/section/div/div[10]/div[4]/div[2]/div/div[2]/span[2]/div[2]",
+        "/html/body/div[2]/div/main/section/div/div[11]/div[4]/div[2]/div/div[2]/span[2]/div[2]"
+    ]
+
+    for xpath in xpaths_valor_firma:
+        try:
+            time.sleep(1)
+            valor_firma = WebDriverWait(navegador, 1).until(EC.presence_of_element_located((By.XPATH, xpath))).text
+            break
+        except Exception as e:
+            pass
+
+    xpaths_valor_mercado = [
+        "/html/body/div[2]/div/main/section/div/div[12]/div[4]/div[2]/div/div[2]/span[2]/div[2]",
+        "/html/body/div[2]/div/main/section/div/div[12]/div[4]/div[2]/div/div[1]/span[2]/div[2]",
+        "/html/body/div[2]/div/main/section/div/div[10]/div[4]/div[2]/div/div[1]/span[2]/div[2]",
+        "/html/body/div[2]/div/main/section/div/div[11]/div[4]/div[2]/div/div[1]/span[2]/div[2]",
+    ]
+
+    for xpath in xpaths_valor_mercado:
+        try:
+            time.sleep(1)
+            valor_mercado = WebDriverWait(navegador, 1).until(EC.presence_of_element_located((By.XPATH, xpath))).text
+            break
+        except Exception as e:
+            pass
+
 
     valor_firma = valor_firma.replace('R$', '').replace(' Bilhões', '').replace('%', '').strip()
     valor_mercado = valor_mercado.replace('R$', '').replace(' Bilhões', '').replace('%', '').strip()
 
     # VAI PARA A TABELA 2
 
-    xpaths_descer_tela_2 = ["/html/body/div[2]/div/main/section/div/div[14]/div[2]",
-                            "/html/body/div[2]/div/main/section/div/div[13]/div[2]",
-                            "/html/body/div[2]/div/main/section/div/div[12]/div[2]/div[1]",
-                            "/html/body/div[2]/div/main/section/div/div[12]/div[3]",
-                            ]
+    xpaths_descer_tela_2 = ['//*[starts-with(@id, "select2-balance-results-period-")]']
 
     for path in xpaths_descer_tela_2:
         try:
@@ -204,17 +226,11 @@ def get_dados_fundamentalistas_selenium_inv_10(navegador):
         except Exception as e:
             pass
 
-    if not descer_tela_2:
-        print("Falha ao encontrar algum path para descer a tela. 2")
 
     time.sleep(3)
 
     xpaths_menu_anos = [
-        "/html/body/div[2]/div/main/section/div/div[14]/div[3]/div[1]/div/ul/li[5]/span/span[1]/span/span[1]",
-        "/html/body/div[2]/div/main/section/div/div[14]/div[2]/div[1]/div/ul/li[5]/span/span[1]/span/span[1]",
-        "/html/body/div[2]/div/main/section/div/div[13]/div[2]/div[1]/div/ul/li[5]/span/span[1]/span/span[1]",
-        "/html/body/div[2]/div/main/section/div/div[12]/div[3]/div[1]/div/ul/li[5]/span/span[1]/span/span[1]",
-        "/html/body/div[2]/div/main/section/div/div[12]/div[2]/div[1]/div/ul/li[5]/span/span[1]/span/span[1]"
+         '//*[starts-with(@id, "select2-balance-results-period-")]'
     ]
 
     for path in xpaths_menu_anos:
@@ -227,20 +243,23 @@ def get_dados_fundamentalistas_selenium_inv_10(navegador):
             pass
 
     # Seleciona 15 ANOS ou 10 ANOS
-    try:
-        elemento_ano = navegador.find_element(By.XPATH, '/html/body/span/span/span[2]/ul/li[5]')
-    except:
-        elemento_ano = navegador.find_element(By.XPATH, '/html/body/span/span/span[2]/ul/li[4]')
+    xpaths_ele_ano = [
+        "/html/body/span/span/span[2]/ul/li[5]",
+        "/html/body/span/span/span[2]/ul/li[4]",
+    ]
+    for path in xpaths_ele_ano:
+        try:
+            elemento_ano = WebDriverWait(navegador, 1).until(EC.presence_of_element_located((By.XPATH, path)))
+            time.sleep(1)
+            elemento_ano.click()
+            break
+        except Exception as e:
+            pass
 
-    elemento_ano.click()
     time.sleep(1)
 
     xpaths_val_detalhados = [
-        "/html/body/div[2]/div/main/section/div/div[14]/div[3]/div[1]/div/ul/li[2]/span/span[1]/span/span[1]",
-        "/html/body/div[2]/div/main/section/div/div[14]/div[2]/div[1]/div/ul/li[2]/span/span[1]/span/span[1]",
-        "/html/body/div[2]/div/main/section/div/div[13]/div[2]/div[1]/div/ul/li[2]/span/span[1]/span/span[1]",
-        "/html/body/div[2]/div/main/section/div/div[12]/div[3]/div[1]/div/ul/li[2]/span/span[1]/span/span[1]",
-        "/html/body/div[2]/div/main/section/div/div[12]/div[2]/div[1]/div/ul/li[2]/span/span[1]/span/span[1]"
+        '//*[starts-with(@id, "select2-balance-results-values-view-")]'
     ]
 
     for path in xpaths_val_detalhados:
@@ -290,7 +309,7 @@ def get_dados_fundamentalistas_selenium_inv_10(navegador):
                         # Se ainda tem valor após remover os parênteses, é um número negativo
                         value = '-' + value
                 elif '-' in value and value.index('-') == len(value) - 1:  # '-' está no final, trate como None
-                    value = None
+                    value = 0
                 cell_values[i] = value
                 data_2[year].append({indicator_name_2: cell_values[i]})
 
@@ -322,13 +341,21 @@ def get_dados_fundamentalistas_selenium_fundamentus(navegador, ticket):
     navegador.get(f"https://fundamentei.com/br/{ticket}")
 
     time.sleep(1)
+    try:
+        erro = navegador.find_element(By.XPATH, "/html/body/div[1]/div/div/div[2]/a").text
+        if erro == 'Voltar à página inicial':
+            return erro
+    except:
+        pass
 
     descer_tela = navegador.find_element(By.XPATH, "/html/body/div[1]/div[2]/div[3]/div[14]")
     navegador.execute_script("arguments[0].scrollIntoView(true);", descer_tela)
 
-    xpaths_tabela = ["/html/body/div[1]/div[2]/div[3]/div[12]/div/table",
+    xpaths_tabela = ["/html/body/div[1]/div[2]/div[3]/div[11]/div/table",
+                     "/html/body/div[1]/div[2]/div[3]/div[12]/div/table",
                      "/html/body/div[1]/div[2]/div[3]/div[13]/div/table",
-                     "/html/body/div[1]/div[2]/div[3]/div[14]/div/table"]
+                     "/html/body/div[1]/div[2]/div[3]/div[14]/div/table",
+                     ]
 
     table = None
 
@@ -375,7 +402,7 @@ def get_dados_fundamentalistas_selenium_fundamentus(navegador, ticket):
                     cell = cells[header_cells.index(variant)]  # removido o +1
                     value = cell.text.replace('R$', '').replace('%', '').strip()
                     if value == '-':
-                        value = None
+                        value = 0
                     elif value.startswith('(') and value.endswith(')'):
                         value = -float(value[1:-1])
                     elif value and field not in ['Margem Líquida', 'ROE', 'Payout']:
@@ -397,9 +424,15 @@ def config_ini():
     except FileNotFoundError:
         tickers_processed = []
 
+    try:
+        with open('JSONS/tickers_processed_inv10.json', 'r') as f:
+            tickers_processed_inv10 = json.load(f)
+    except FileNotFoundError:
+        tickers_processed_inv10 = []
+
     # Pega os tickers que ainda não foram processados
     tickers = [ticker for ticker in all_tickers if ticker not in tickers_processed]
-    tickers_10 = [ticker_10 for ticker_10 in all_tickers_inv_10]
+    tickers_10 = [ticker_10 for ticker_10 in all_tickers_inv_10 if ticker_10 not in tickers_processed_inv10]
 
     if tickers:
         chrome_options = Options()
@@ -410,6 +443,11 @@ def config_ini():
 
             for ticker in tickers:
                 dados = get_dados_fundamentalistas_selenium_fundamentus(navegador, ticker)
+                if dados == 'Voltar à página inicial':
+                    tickers_processed.append(ticker)
+                    with open('JSONS/tickers_processed.json', 'w') as f:
+                        json.dump(tickers_processed, f)
+                    continue
                 insere_pg(dados, ticker)
 
                 # Adiciona o ticker à lista de tickers processados e salva no arquivo
@@ -423,7 +461,7 @@ def config_ini():
     elif tickers_10:
         chrome_options = Options()
         chrome_options.add_argument("--user-data-dir=C:\\Users\\mrcr\\AppData\\Local\\Google\\Chrome\\User Data")
-        servico = Service(ChromeDriverManager().install())
+        servico = Service(ChromeDriverManager(version="114.0.5735.90").install())
 
         with webdriver.Chrome(service=servico, options=chrome_options) as navegador:
 
@@ -433,6 +471,9 @@ def config_ini():
 
                 if login(navegador):
                     dados = get_dados_fundamentalistas_selenium_inv_10(navegador)
+                    tickers_processed_inv10.append(ticker)
+                    with open('JSONS/tickers_processed_inv10.json', 'w') as f:
+                        json.dump(tickers_processed_inv10, f)
                     atualiza_pg_inv10(dados, ticker)
 
             navegador.close()

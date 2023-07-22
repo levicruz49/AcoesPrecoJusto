@@ -2,13 +2,16 @@ import yfinance as yf
 import json
 import datetime
 
-from facade import get_tickers, conexao_pg
+from facade import get_tickers, conexao_pg, get_tickers_cotacao
 
 
 def update_cotacao(ticker):
     ticker = ticker + ".SA"
     tickerData = yf.Ticker(ticker)
-    cotacao = round(tickerData.history(period='1d').Close[0], 2)
+    try:
+        cotacao = round(tickerData.history(period='1d').Close[0], 2)
+    except:
+        cotacao = 0.00
 
     conn = conexao_pg()
     cur = conn.cursor()
@@ -26,7 +29,9 @@ def update_cotacao(ticker):
 
 
 def config_ini_cotacao():
-    all_tickers = get_tickers()
+    # all_tickers = get_tickers()
+
+    all_tickers = get_tickers_cotacao()
 
     try:
         with open('JSONS/last_update_cotacao.json', 'r') as f:
@@ -35,6 +40,7 @@ def config_ini_cotacao():
         last_update = datetime.datetime(2000, 1, 1)
 
     today = datetime.datetime.now().date()
+
     if today != last_update.date():
         for ticker in all_tickers:
             update_cotacao(ticker)
